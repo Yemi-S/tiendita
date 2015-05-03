@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import tiendita.controlador.CAgregarProducto;
 import tiendita.controlador.IVenta;
 
 /**
@@ -256,13 +257,10 @@ public class UIMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        if(interfaceVenta.validarCodigoV(Integer.parseInt(txtCodV.getText()))) {
-            
+        if(interfaceVenta.validarCodigoV(txtCodV.getText())) {
             if(interfaceVenta.validarIDCliente(txtDniRuc.getText())) {
-                if(interfaceVenta.validarCliente(txtCliente.getText()))
-                {
-                    if(interfaceVenta.validarDireccion(txtDireccion.getText()))
-                    {
+                if(interfaceVenta.validarCliente(txtCliente.getText())) {
+                    if(interfaceVenta.validarDireccion(txtDireccion.getText())) {
                         interfaceVenta.realizarVenta();
                     }
                     else
@@ -279,8 +277,7 @@ public class UIMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPActionPerformed
-        UIAgregarProducto agregarProducto = new UIAgregarProducto();
-        agregarProducto.setVisible(true);
+        CAgregarProducto agregarP = new CAgregarProducto();
         dispose();
     }//GEN-LAST:event_btnAgregarPActionPerformed
 

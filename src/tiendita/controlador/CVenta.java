@@ -22,13 +22,20 @@ public class CVenta implements IVenta{
     }
     
     @Override
-    public boolean validarCodigoV(int codigo){
-        if(codigo > 0) {
-            venta.setId(codigo);
-            return true;
+    public boolean validarCodigoV(String codigo) {
+        try{
+            int code = Integer.parseInt(codigo);
+            if(code > 0) {
+                venta.setId(code);
+                return true;
+            }
+            else
+                return false;
         }
-        else
-            return false;
+        catch(NumberFormatException ne)
+                {
+                    return false;
+                }
     }
     
     @Override

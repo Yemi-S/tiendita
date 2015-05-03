@@ -9,7 +9,7 @@ import javax.swing.JList;
 
 public interface IVenta {
     
-    public boolean validarCodigoV(int codigo);
+    public boolean validarCodigoV(String codigo);
     public boolean validarIDCliente(String idCliente);
     public boolean validarCliente(String cliente);
     public boolean validarDireccion(String direccion);
