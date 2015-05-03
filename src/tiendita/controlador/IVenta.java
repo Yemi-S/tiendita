@@ -2,6 +2,7 @@ package tiendita.controlador;
 
 import java.util.ArrayList;
 import javax.swing.JList;
+import javax.swing.JTable;
 import tiendita.modelo.Producto;
 
 /**
@@ -17,6 +18,6 @@ public interface IVenta {
     public boolean validarDireccion(String direccion);
     public ArrayList<Producto> getLista();
     public void inicializarProductos(JList list);
-    
-    public void realizarVenta();  
+    public void agregarCesta(JList jlist, JTable jtable);
+    public void realizarVenta(JTable jtable);  
 }
