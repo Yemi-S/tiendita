@@ -6,30 +6,20 @@ package tiendita.modelo;
  */
 public class Producto {
     
-    private int id;
     private String nombre;
     private double cantidad;
     private double precio;
     private String imagen;
 
     public Producto() {
-        this(-1, "NULL", 0, 0, "NULL");
+        this("NULL", 0, 0, "NULL");
     }
 
-    public Producto(int id, String nombre, double cantidad, double precio, String imagen) {
-        this.id = id;
+    public Producto(String nombre, double cantidad, double precio, String imagen) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
         this.imagen = imagen;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {

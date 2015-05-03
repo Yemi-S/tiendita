@@ -1,5 +1,8 @@
 package tiendita.vista;
 
+import java.awt.print.PrinterException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import tiendita.controlador.IVenta;
@@ -23,6 +26,7 @@ public class UIMain extends javax.swing.JFrame {
         this.setVisible(true);
         initComponents();
         this.interfaceVenta = interfaceVenta;
+        interfaceVenta.inicializarProductos(lstProductos);
     }
 
     /**
@@ -83,18 +87,14 @@ public class UIMain extends javax.swing.JFrame {
 
         tblVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID", "Nombre", "Precio", "Cantidad"
+                "Cantidad", "Producto", "Precio Unitario", "Precio Cantidad"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -124,6 +124,11 @@ public class UIMain extends javax.swing.JFrame {
         txtPrecio.setText("0.00");
 
         btnAgregarP.setText("AGREGAR");
+        btnAgregarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPActionPerformed(evt);
+            }
+        });
 
         btnModificarP.setText("MODIFICAR");
 
@@ -252,6 +257,7 @@ public class UIMain extends javax.swing.JFrame {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         if(interfaceVenta.validarCodigoV(Integer.parseInt(txtCodV.getText()))) {
+            
             if(interfaceVenta.validarIDCliente(txtDniRuc.getText())) {
                 if(interfaceVenta.validarCliente(txtCliente.getText()))
                 {
@@ -271,6 +277,10 @@ public class UIMain extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(null, "Ingrese un codigo valido", "Error", ERROR_MESSAGE);
     }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPActionPerformed
+        
+    }//GEN-LAST:event_btnAgregarPActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

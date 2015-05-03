@@ -1,5 +1,8 @@
 package tiendita.controlador;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import tiendita.modelo.Venta;
 import tiendita.vista.UIMain;
 
@@ -63,4 +66,11 @@ public class CVenta implements IVenta{
         
     }
     
+    public void inicializarProductos(JList list)
+    {
+        DefaultListModel lista = new DefaultListModel();
+        /* LEER DE UN ARCHIVO */
+        lista.addElement("Pony");
+        list.setModel(lista);
+    }
 }
