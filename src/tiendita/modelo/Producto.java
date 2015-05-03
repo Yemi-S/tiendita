@@ -7,7 +7,7 @@ package tiendita.modelo;
 public class Producto {
     
     private String nombre;
-    private double cantidad;
+    private double stock;
     private double precio;
     private String imagen;
 
@@ -15,9 +15,9 @@ public class Producto {
         this("NULL", 0, 0, "NULL");
     }
 
-    public Producto(String nombre, double cantidad, double precio, String imagen) {
+    public Producto(String nombre, double stock, double precio, String imagen) {
         this.nombre = nombre;
-        this.cantidad = cantidad;
+        this.stock = stock;
         this.precio = precio;
         this.imagen = imagen;
     }
@@ -30,12 +30,12 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public double getCantidad() {
-        return cantidad;
+    public double getStock() {
+        return stock;
     }
 
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
+    public void setStock(double cantidad) {
+        this.stock = cantidad;
     }
 
     public double getPrecio() {

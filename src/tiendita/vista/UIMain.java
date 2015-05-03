@@ -279,7 +279,9 @@ public class UIMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPActionPerformed
-        
+        UIAgregarProducto agregarProducto = new UIAgregarProducto();
+        agregarProducto.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnAgregarPActionPerformed
 
 
