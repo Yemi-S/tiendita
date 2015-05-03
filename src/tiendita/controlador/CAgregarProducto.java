@@ -1,6 +1,7 @@
 package tiendita.controlador;
 
 import java.io.*;
+import java.util.ArrayList;
 import tiendita.modelo.Producto;
 import tiendita.vista.UIAgregarProducto;
 
@@ -13,8 +14,10 @@ public class CAgregarProducto implements IAgregarProducto {
     
     private UIAgregarProducto agregarP;
     private Producto producto;
+    private ArrayList<Producto> listaP;
     
-    public CAgregarProducto() {
+    public CAgregarProducto(ArrayList<Producto> listaP) {
+        this.listaP = listaP;
         agregarP = new UIAgregarProducto(this);
         producto = new Producto();
     }
@@ -64,27 +67,12 @@ public class CAgregarProducto implements IAgregarProducto {
     }
     
     @Override
-    public boolean agregarProducto() {
-        FileWriter fw = null;
-        PrintWriter br = null;
-        try {
-            fw = new FileWriter("src/Recursos/productos.dat", true);
-            br = new PrintWriter(fw);
-            
-            br.println(producto.getNombre());
-            br.println(producto.getStock());
-            br.println(producto.getPrecio());
-            
-            return true;
-        } catch (IOException ex) {
-            return false;
-        } finally {
-            try {
-                if (null != fw)
-                   fw.close();
-            } catch (IOException ex) { }
-        }
-        
+    public void agregarProducto() {
+        listaP.add(producto);
+    }
+    
+    public ArrayList<Producto> getLista() {
+        return listaP;
     }
     
 }

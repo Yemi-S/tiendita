@@ -6,16 +6,19 @@
 
 package tiendita.controlador;
 
+import java.util.ArrayList;
+import tiendita.modelo.Producto;
+
 /**
  *
  * @author yuli
  */
 public interface IAgregarProducto {
-    
+      
     public boolean validarNombre(String nombre);
     public boolean validarStock(String stock);
     public boolean validarPrecio(String precio);
-    
-    public boolean agregarProducto();
+    public ArrayList<Producto> getLista();
+    public void agregarProducto();
     
 }

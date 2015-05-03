@@ -1,8 +1,10 @@
 package tiendita.controlador;
 
 import java.io.*;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import tiendita.modelo.Producto;
 import tiendita.modelo.Venta;
 import tiendita.vista.UIMain;
 
@@ -15,8 +17,10 @@ public class CVenta implements IVenta{
     
     private UIMain ventanaPrincipal;
     private Venta venta;
+    private ArrayList <Producto> listaP;
     
-    public CVenta() {
+    public CVenta(ArrayList <Producto> listaProductos) {
+        this.listaP = listaProductos;
         venta = new Venta();
         ventanaPrincipal = new UIMain(this);
     }
@@ -73,41 +77,17 @@ public class CVenta implements IVenta{
         
     }
     
-    public boolean inicializarProductos(JList list)
+    public ArrayList<Producto> getLista()
     {
-        DefaultListModel lista = new DefaultListModel();
-        
-        File archivoProducto = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-        
-        try {
-            archivoProducto = new File ("src/Recursos/productos.dat");
-            fr = new FileReader (archivoProducto);
-            br = new BufferedReader(fr);
-
-            String linea;
-            int count = 0;
-            
-            while((linea = br.readLine()) != null)
-            {
-                if(count % 3 == 0)
-                    lista.addElement(linea);
-                count++;
-            }
-            list.setModel(lista);
-            return true;
+        return listaP;
+    }
+    
+    public void inicializarProductos(JList jlist)
+    {
+        DefaultListModel list = new DefaultListModel();
+        for(int i = 0; i < listaP.size(); i++) {
+            list.addElement(listaP.get(i).getNombre());
         }
-        catch(IOException e){
-            return false;
-        }
-        finally {
-            try {                    
-                if( null != fr ) {   
-                   fr.close();     
-                }                  
-            }
-            catch (IOException e2){ }
-        }
+        jlist.setModel(list);
     }
 }

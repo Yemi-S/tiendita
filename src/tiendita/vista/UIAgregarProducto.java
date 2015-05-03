@@ -142,7 +142,7 @@ public class UIAgregarProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        CVenta controller = new CVenta();
+        CVenta controller = new CVenta(interfaceProducto.getLista());
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -151,11 +151,8 @@ public class UIAgregarProducto extends javax.swing.JFrame {
             if(interfaceProducto.validarStock(txtStock.getText())) {
                 if(interfaceProducto.validarPrecio(txtPrecio.getText()))
                 {
-                    if(interfaceProducto.agregarProducto()) {
-                        JOptionPane.showMessageDialog(null, "Producto Agregado !", "Listo", INFORMATION_MESSAGE);
-                    }
-                    else
-                        JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el producto. Intente de nuevo", "Error", ERROR_MESSAGE);
+                    interfaceProducto.agregarProducto();
+                    JOptionPane.showMessageDialog(null, "Producto Agregado !", "Listo", INFORMATION_MESSAGE);
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Ingrese un precio válido", "Error", ERROR_MESSAGE);
@@ -166,7 +163,7 @@ public class UIAgregarProducto extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(null, "Ingrese un nombre al producto", "Error", ERROR_MESSAGE);
         
-        CVenta controller = new CVenta();
+        CVenta controller = new CVenta(interfaceProducto.getLista());
         dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 

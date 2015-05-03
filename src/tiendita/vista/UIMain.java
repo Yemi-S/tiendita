@@ -1,8 +1,5 @@
 package tiendita.vista;
 
-import java.awt.print.PrinterException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import tiendita.controlador.CAgregarProducto;
@@ -277,7 +274,7 @@ public class UIMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPActionPerformed
-        CAgregarProducto agregarP = new CAgregarProducto();
+        CAgregarProducto agregarP = new CAgregarProducto(interfaceVenta.getLista());
         dispose();
     }//GEN-LAST:event_btnAgregarPActionPerformed
 
