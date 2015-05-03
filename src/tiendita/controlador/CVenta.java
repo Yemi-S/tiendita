@@ -1,8 +1,8 @@
 package tiendita.controlador;
 
+import java.io.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import tiendita.modelo.Venta;
 import tiendita.vista.UIMain;
 
@@ -73,11 +73,41 @@ public class CVenta implements IVenta{
         
     }
     
-    public void inicializarProductos(JList list)
+    public boolean inicializarProductos(JList list)
     {
         DefaultListModel lista = new DefaultListModel();
-        /* LEER DE UN ARCHIVO */
-        lista.addElement("Pony");
-        list.setModel(lista);
+        
+        File archivoProducto = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        
+        try {
+            archivoProducto = new File ("src/Recursos/productos.dat");
+            fr = new FileReader (archivoProducto);
+            br = new BufferedReader(fr);
+
+            String linea;
+            int count = 0;
+            
+            while((linea = br.readLine()) != null)
+            {
+                if(count % 3 == 0)
+                    lista.addElement(linea);
+                count++;
+            }
+            list.setModel(lista);
+            return true;
+        }
+        catch(IOException e){
+            return false;
+        }
+        finally {
+            try {                    
+                if( null != fr ) {   
+                   fr.close();     
+                }                  
+            }
+            catch (IOException e2){ }
+        }
     }
 }

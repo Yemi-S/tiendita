@@ -1,7 +1,7 @@
 package tiendita.vista;
 
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.*;
 import tiendita.controlador.CVenta;
 import tiendita.controlador.IAgregarProducto;
 
@@ -151,7 +151,11 @@ public class UIAgregarProducto extends javax.swing.JFrame {
             if(interfaceProducto.validarStock(txtStock.getText())) {
                 if(interfaceProducto.validarPrecio(txtPrecio.getText()))
                 {
-                    interfaceProducto.agregarProducto();
+                    if(interfaceProducto.agregarProducto()) {
+                        JOptionPane.showMessageDialog(null, "Producto Agregado !", "Listo", INFORMATION_MESSAGE);
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el producto. Intente de nuevo", "Error", ERROR_MESSAGE);
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Ingrese un precio válido", "Error", ERROR_MESSAGE);
@@ -161,6 +165,9 @@ public class UIAgregarProducto extends javax.swing.JFrame {
         }
         else
             JOptionPane.showMessageDialog(null, "Ingrese un nombre al producto", "Error", ERROR_MESSAGE);
+        
+        CVenta controller = new CVenta();
+        dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**

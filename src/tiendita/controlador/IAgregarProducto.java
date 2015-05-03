@@ -16,6 +16,6 @@ public interface IAgregarProducto {
     public boolean validarStock(String stock);
     public boolean validarPrecio(String precio);
     
-    public void agregarProducto();
+    public boolean agregarProducto();
     
 }

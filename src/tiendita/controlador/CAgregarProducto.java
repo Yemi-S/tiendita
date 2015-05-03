@@ -1,5 +1,6 @@
 package tiendita.controlador;
 
+import java.io.*;
 import tiendita.modelo.Producto;
 import tiendita.vista.UIAgregarProducto;
 
@@ -63,7 +64,26 @@ public class CAgregarProducto implements IAgregarProducto {
     }
     
     @Override
-    public void agregarProducto() {
+    public boolean agregarProducto() {
+        FileWriter fw = null;
+        PrintWriter br = null;
+        try {
+            fw = new FileWriter("src/Recursos/productos.dat", true);
+            br = new PrintWriter(fw);
+            
+            br.println(producto.getNombre());
+            br.println(producto.getStock());
+            br.println(producto.getPrecio());
+            
+            return true;
+        } catch (IOException ex) {
+            return false;
+        } finally {
+            try {
+                if (null != fw)
+                   fw.close();
+            } catch (IOException ex) { }
+        }
         
     }
     

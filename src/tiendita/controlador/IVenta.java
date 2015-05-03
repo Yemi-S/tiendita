@@ -13,7 +13,7 @@ public interface IVenta {
     public boolean validarIDCliente(String idCliente);
     public boolean validarCliente(String cliente);
     public boolean validarDireccion(String direccion);
-    public void inicializarProductos(JList list);
+    public boolean inicializarProductos(JList list);
     
     public void realizarVenta();  
 }
